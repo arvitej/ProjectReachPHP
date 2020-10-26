@@ -1,0 +1,235 @@
+:root{
+    --color-white:#f3f3f3;
+      --color-darkblue:#1b1b32;
+      --color-darkblue-alpha:rgba(27,27,50,0.8);
+      --color-green:#37af65;
+      
+  }
+  *,*:before,*:after{
+    box-sizing:border-box;
+  }
+
+
+
+
+
+
+body,html{
+    margin:0;
+    padding:0;
+}
+header{
+    width:100%;
+    height:70px;
+    background-color:black;
+    font-family: 'Allura', cursive;
+    position:fixed;
+}
+h1{
+    position: absolute;
+    padding:3px;
+    float:left;
+    margin-top:10px;
+    margin-left:2%;
+    color:#39ca74;
+}
+span{
+    color:#ffffff;
+}
+ul{
+    width:auto;
+    float:right;
+    margin-top:8px;
+}
+li{
+    display:inline-block;
+    padding:15px 30px;
+}
+
+a{
+    text-align:center;
+    color:#ffffff;
+    font-size:16px;
+}
+a:hover{
+    color:#F0c330;
+    transition: 15ms;;
+}
+
+#aboutProjectReach{
+  border-radius: 5px;
+  background-color:gainsboro;
+  text-align:center;
+  padding:10px;
+  font-family: 'Allura', cursive;
+}
+img{
+  width:100%;
+}
+
+
+/* 
+
+label{
+    display:flex;
+    font-size:1.125rem;
+    margin-bottom:0.5rem;
+    align-items:center;
+    
+    
+  }
+  .sign-up-section{
+
+    font-family:sans-serif;
+    font-size:1rem;
+    font-weight:400;
+    line-height:1.4;
+    margin:0px;
+    background-image: linear-gradient(
+        115deg,
+        rgba(58, 58, 158, 0.8),
+        rgba(136, 136, 206, 0.7)
+      ),
+       url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+    background-position: center;
+
+  }
+  .entireform{
+    width:50%;
+    margin:0 4rem 0 0;
+    background-color:var(--color-darkblue-alpha);
+
+
+  } */
+  #title,#description{
+    text-align:center;
+  }
+/*   #survey-form{
+    
+    padding:25px;
+  }
+  .form-group{
+    padding:5px;
+    margin:0 auto 0.75px auto;
+  }
+  .form-control{
+    height:2.735rem;
+    width:100%;
+    border:1px solid black;
+    border-radius:0.25rem;
+    
+    
+  }
+  #submit{
+    background-color:green;
+    border-radius:25px;
+    cursor:pointer;
+    margin:10px auto 0 auto;
+  } */
+  
+  @import url('https://fonts.googleapis.com/css?family=Allura|Josefin+Sans');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: grey;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* .wrapper{
+  margin-top: 50px;
+} */
+
+.wrapper h1{
+  font-family: 'Allura', cursive;
+  font-size: 52px;
+  margin-bottom: 60px;
+  padding-left: 35%;
+  
+}
+
+.team{
+  display: flex;
+  justify-content: center;
+  width: auto;
+  text-align: center;
+  flex-wrap: wrap;
+  padding-top:140px;
+  font-family: 'Allura', cursive;
+}
+
+.team .team_member{
+  background: #fff;
+  margin: 5px;
+  margin-bottom: 50px;
+  width: 300px;
+  padding: 10px;
+  line-height: 20px;
+  color: #8e8b8b;  
+  position: relative;
+}
+
+.team .team_member h3{
+  color: violet;
+  font-size: 26px;
+  margin-bottom: 50px;
+}
+
+.team .team_member p.role{
+  color: #ccc;
+  margin: 12px 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.team .team_member .team_img{
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.team .team_member .team_img img{
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+}
+.footer{
+  font-family: 'Allura', cursive;
+  height:70px;
+  width:100%;
+  background-color:black;
+  display:flex;
+  flex-direction: row;
+  position:relative;
+}
+
+.footerheading1{
+
+  padding-left: 5px;
+  float:left;
+}
+
+.footerheading2{
+
+ /*  text-align: right; */
+ position:absolute;
+ left:80%;
+}
+
+.footerheading1 h3{
+
+  color: #ffffff;
+}
+.footerheading2 h4{
+
+  color: #ffffff;
+}
