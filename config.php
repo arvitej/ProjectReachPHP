@@ -1,8 +1,5 @@
 <?php
-$dbServername="localhost";
-$dbUsername="root";
-$dbPassword="";
-$dbName="projectreach";
-
-$conn=mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);
-?>
+$conn=mysqli_connect('localhost:3340',
+    'root',
+    '',
+    'projectreach');
