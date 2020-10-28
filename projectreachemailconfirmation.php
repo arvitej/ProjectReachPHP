@@ -5,7 +5,7 @@ echo '
 <html lan="en">
   <head>
     <title>sign-up</title>
-    <link rel="stylesheet" type="text/css" href="projectReachSignUpCSS.css">
+    <link rel="stylesheet" type="text/css" href="SignupCSS.css">
   </head>
 
   <header>

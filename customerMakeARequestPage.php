@@ -1,11 +1,81 @@
 <?php
+//echo "working";
+$errors=array();
+$errors['pickupcity']='';
+$errors['dropcity']='';
+$errors['typeofitem']='';
+$errors['weight']='';
+$errors['distance']='';
+//echo "before isset";
+if(isset($_POST['makeARequestButton'])){
+    //echo "after isset";
 
-echo '
+
+        $conn=mysqli_connect('localhost:3340',
+            'root',
+            '',
+            'projectreach');
+        session_start();
+        $username=$_SESSION['username'];
+        $pickupaddress=$_POST['pickupaddress'];
+        $pickupcity=$_POST['pickupcity'];
+        $dropcity=$_POST['dropcity'];
+        $destinationaddress=$_POST['destinationaddress'];
+        $typeofitem=$_POST['typeofitem'];
+        $weight=$_POST['weight'];
+        $distance=$_POST['distance'];
+
+        //checking for errors in form input
+        if(!(preg_match("/^[a-z A-Z]+$/",$pickupcity))){
+
+            $errors['pickupcity']="pick-up city name should be only alphabets";
+
+        }
+        if(!(preg_match("/^[a-z A-Z]+$/",$dropcity))){
+            $errors['dropcity']="Drop city  should contain only alphabets";
+
+        }
+        if(!(preg_match("/^[0-9]+$/",$weight))){
+            $errors['weight']="Weight should be only numbers";
+
+        }
+        if(!(preg_match("/^[0-9]+$/",$distance))){
+            $errors['distance']="Distance should be only numbers";
+
+        }
+
+
+        if($errors['pickupcity']==''&$errors['dropcity']==''&$errors['weight']==''&$errors['distance']==''){
+            echo 'entered errors if';
+            //$password=md5($password);
+            echo "before query";
+
+            $query="INSERT INTO customerrequest(username,pickupaddress,pickupcity,dropcity,destinationaddress,typeofitem,weight,distance) VALUES('$username','$pickupaddress','$pickupcity','$dropcity','$destinationaddress','$typeofitem','$weight','$distance')";
+            mysqli_query($conn,$query);
+//            $_SESSION['username']=$username;
+//            $_SESSION['success']="you are now successfully logged in";
+            echo "before header";
+            header('location:yourRequests.php');
+
+        }
+
+
+
+
+
+
+
+}
+
+
+
+?>
+
 <!doctype html>
 <html lan="en">
   <head>
-    <title>sign-up</title>
-    <link rel="stylesheet" type="text/css" href="customerMakeRequestPage.css">
+    <title>MakeARequest</title>
+    <link rel="stylesheet" type="text/css" href="SignupCSS.css">
   </head>
 
   <header>
@@ -29,7 +99,7 @@ echo '
         <!-- <h1 id="title">Project Reach</h1> -->
         <h2 id="description">Make A Request</h2>
       </div>
-      <form id="customerRequest-form">
+      <form id="customerRequest-form" action="customerMakeARequestPage.php" method="post">
         <div class="form-group">
           <label for="pickUpAddressBox" id="pickUpAddresBox-label">
             Pick-Up Address:
@@ -39,10 +109,53 @@ echo '
                  type="text-box"
                  class="form-control"
                     placeholder="Enter Your Pick-Up Address"
-                    id="pickUpAddressBox" required>
+                    id="pickUpAddressBox"
+                 name="pickupaddress" required>
           </textarea>
+
+
           
         </div>
+
+          <div class="form-group">
+              <label for="pickUpCityBox" id="pickUpCityBox-label">
+                  Pick-Up City:
+              </label>
+              <textarea
+
+                  type="text-box"
+                  class="form-control"
+                  placeholder="Enter Your Pick-Up City"
+                  id="pickUpCityBox"
+                  name="pickupcity" required>
+          </textarea>
+
+              <div class="error-text">
+
+                  <?php   echo $errors['pickupcity'];   ?>
+              </div>
+
+          </div>
+
+          <div class="form-group">
+              <label for="dropCityBox" id="dropCityBox-label">
+                  Drop City:
+              </label>
+              <textarea
+
+                  type="text-box"
+                  class="form-control"
+                  placeholder="Enter Your Drop City"
+                  id="dropCityBox"
+                  name="dropcity" required>
+          </textarea>
+              <div class="error-text">
+
+                  <?php   echo $errors['dropcity'];   ?>
+              </div>
+
+          </div>
+
         
        
         
@@ -54,7 +167,8 @@ echo '
                  type="text-box"
                  class="form-control"
                     placeholder="Enter Your Pick-Up Address"
-                    id="destinationAddressBox" required>
+                    id="destinationAddressBox"
+                 name="destinationaddress" required>
           </textarea>
           
         </div>
@@ -63,7 +177,7 @@ echo '
           <label for="typeOfItem" id="typeOfItem-Label">
             Type of Item:
           </label>
-          <select name="itemType" id="typeOfItem" class="form-control">
+          <select name="typeofitem" id="typeOfItem" class="form-control">
             <option value="food">food</option>
             <option value="books">books</option>
             <option value="clothes">clothes</option>
@@ -80,12 +194,16 @@ echo '
            Weight in Pounds:
           </label>
           <input type="text"
-                 name="itemWeightInput"
+                 name="weight"
                  id="itemWeight"
                  
                  class="form-control"
                  placeholder="Enter weigth of Item.." 
                  required>
+            <div class="error-text">
+
+                <?php   echo $errors['weight'];   ?>
+            </div>
            
   
            
@@ -101,19 +219,23 @@ echo '
        
           
         <div class="form-group">
-          <label for="distance" id="distanceLabel">Distance between pick-up and drop point:</label>
+          <label for="distanceInput" id="distanceLabel">Distance between pick-up and drop point:</label>
           <input type="text"
-                 name="distanceInput"
-                 id="distance"
+                 name="distance"
+                 id="distanceInput"
                  
                  class="form-control"
                  placeholder="Enter distance between pick-up and drop point.." 
                  required>
+            <div class="error-text">
+
+                <?php   echo $errors['distance'];   ?>
+            </div>
           
           </div>
           
           <div class="form-group">
-            <button type="submit" id="makeRequest" class="form-control">Make a Request
+            <button name="makeARequestButton"type="submit" id="submit" class="form-control">Make a Request
             </button>
             
           </div>
@@ -132,7 +254,7 @@ echo '
 
   
 </html>
-';
 
-?>
+
+
 

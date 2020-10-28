@@ -9,7 +9,7 @@ echo '
     <head>
         <meta charset="UTF-8">
         <title>ProjectReach</title>
-        <link rel="stylesheet" href="customerHomePageCSS.css">
+        <link rel="stylesheet" href="customersHomePageCSS.css">
 
     </head>
 

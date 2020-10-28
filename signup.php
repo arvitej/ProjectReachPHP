@@ -15,6 +15,7 @@
         $dbUsername="root";
         $dbPassword="";
         $dbName="projectreach";
+//        include ('config.php');
         $conn=mysqli_connect('localhost:3340',
             'root',
             '',
@@ -102,6 +103,10 @@
             $errors['address']="please enter you address";
         }
 
+        if(!(preg_match("/@gmail.com/",$email))){
+            $errors['email']="your email should be a google account..";
+        }
+
         if($password!=$confirmpassword){
             $errors['confirmpassword']="password and confirm password should be same";
         }
@@ -139,7 +144,7 @@
 
 
         if($errors['username']==''&$errors['email']==''&$errors['password']==''&$errors['confirmpassword']==''&$errors['address']==''){
-            echo 'entered if';
+            //echo 'entered if';
             //$password=md5($password);
             $query="INSERT INTO signup(username,email,password,confirmpassword,address) VALUES('$username','$email','$password','$confirmpassword','$address')";
             mysqli_query($conn,$query);
@@ -177,8 +182,8 @@
     <!doctype html>
     <html lang="en">
     <head>
-        <title>sign-up</title>
-        <link rel="stylesheet" type="text/css" href="projectReachSignUpCSS.css">
+        <title>signup</title>
+        <link rel="stylesheet" type="text/css" href="SignupCSS.css">
     </head>
 
     <header>
@@ -247,7 +252,7 @@
                 <label for="name" id="name-label" class="label">
                     Password:
                 </label>
-                <input type="text"
+                <input type="password"
                        name="password"
                        id="name"
 
@@ -267,7 +272,7 @@
                 <label for="name" id="Confirmpassword-label">
                     Confirm Password:
                 </label>
-                <input type="text"
+                <input type="password"
                        name="confirmpassword"
                        id="name"
 

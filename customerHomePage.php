@@ -1,39 +1,51 @@
 <?php
+session_start();
+$username=$_SESSION['username'];
+session_abort();
+?>
 
 
-
-echo '
 <!doctype html>
 <html lan="en">
 
     <head>
         <meta charset="UTF-8">
         <title>ProjectReach</title>
-        <link rel="stylesheet" href="customerHomePageCSS.css">
+        <link rel="stylesheet" href="customersHomePageCSS.css">
 
     </head>
 
     <header>
         <h1>PROJECT<span>REACH</span></h1>
+
+
         <nav>
             <ul class="navbar">
                 <li><a class="navbuttons" href="navBar.php">Home</a></li>
                 <li><a class="navbuttons" href="#">ChangePassword</a></li>
                 <li><a class="navbuttons" href="#">Help</a></li>
-                <li><a class="navbuttons" href="signup.php#aboutProjectReach">About</a></li>
+                <li><a class="navbuttons" href="navBar.php#aboutProjectReach">About</a></li>
                 <li><a class="navbuttons" href="sign-in.php">Sign-Out</a></li>
               </ul>
         </nav>
 
     </header>
         <body>
+<!---->
+<!--        <h2>Hello-->
+<!--            --><?php
+//            echo $username;
+//
+//            ?>
+<!---->
+<!--        </h2>-->
 
 
             <div class="divButtons">
 
-                <button type="submit" class="allButtons" id="button1"> make a request</button>
-                <button type="submit" class="allButtons"  id="button2"> your requests</button>
-                <button type="submit"  class="allButtons" id="button3"> give feedback</button>
+                <button type="submit" class="allButtons" id="button1"> <a href="customerMakeARequestPage.php">make a request</a> </button>
+                <button type="submit" class="allButtons"  id="button2"> <a href="#">your requests</a></button>
+                <button type="submit"  class="allButtons" id="button3"> <a href="#">give feedback</a></button>
 
             </div>
 
@@ -54,6 +66,5 @@ echo '
 
 
 </html>
-';
 
-?>
+

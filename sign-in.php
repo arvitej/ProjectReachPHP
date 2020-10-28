@@ -17,6 +17,9 @@
         $username=$_POST['username'];
         $password=$_POST['password'];
         $dropdown=$_POST['chooseusertype'];
+        session_start();
+
+        $_SESSION['username']=$username;
 
         if(empty($username)){
             $errors['username']="username is required";
@@ -39,6 +42,8 @@
 
                 }
                 elseif ($dropdown="dispatcher"){
+//                    session_start();
+//                    $_SESSION['login_user'] = $username;
                     header('location:dispatcherHomePage.php');
 
                 }
@@ -82,7 +87,7 @@
 <html lan="en">
   <head>
     <title>sign-in</title>
-    <link rel="stylesheet" type="text/css" href="projectReachSignUpCSS.css">
+    <link rel="stylesheet" type="text/css" href="SignupCSS.css">
   </head>
 
   <header>
@@ -131,7 +136,7 @@
           <label for="name" id="name-label">
             Password:
           </label>
-          <input type="text"
+          <input type="password"
                  name="password"
                  id="name"
                  
