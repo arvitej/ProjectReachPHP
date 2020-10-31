@@ -4,7 +4,7 @@ $conn=mysqli_connect('localhost:3340',
     '',
     'projectreach');
 session_start();
-$username=$_SESSION['username'];
+$dispatcherUserName=$_SESSION['username'];
 
 ?>
 
@@ -15,7 +15,7 @@ $username=$_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="yourRequests.css">
-    <title>yourRequests</title>
+    <title>yourChoosenRequests</title>
 
 
 </head>
@@ -40,18 +40,18 @@ $username=$_SESSION['username'];
             <th>RequestId</th>
             <th>PickUpAddress</th>
             <th>DestinationAddress</th>
-            <th>TypeofItem</th>
+
             <th>status</th>
         </tr>
 
         <?php
 
-        $sql="SELECT * FROM customerrequest WHERE username='$username'";
+        $sql="SELECT * FROM acceptedrequests WHERE dispatcherUserName='$dispatcherUserName'";
         $result=mysqli_query($conn,$sql);
         //$result_check=mysqli_num_rows($result);
         //if ($result_check>0){
         while ($row=mysqli_fetch_assoc($result)){
-            echo "<tr><td>".$row["requestid"]."</td><td>".$row["pickupaddress"]."</td><td>".$row["destinationaddress"]."</td><td>".$row["typeofitem"]."</td><td>".$row["status"]."</td></tr>";
+            echo "<tr><td>".$row["requestid"]."</td><td>".$row["pickupaddress"]."</td><td>".$row["destinationaddress"]."</td><td>".$row["status"]."</td></tr>";
 
 
 

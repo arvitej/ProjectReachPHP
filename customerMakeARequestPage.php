@@ -46,9 +46,9 @@ if(isset($_POST['makeARequestButton'])){
 
 
         if($errors['pickupcity']==''&$errors['dropcity']==''&$errors['weight']==''&$errors['distance']==''){
-            echo 'entered errors if';
+            //echo 'entered errors if';
             //$password=md5($password);
-            echo "before query";
+            //echo "before query";
 
             $query="INSERT INTO customerrequest(username,pickupaddress,pickupcity,dropcity,destinationaddress,typeofitem,weight,distance) VALUES('$username','$pickupaddress','$pickupcity','$dropcity','$destinationaddress','$typeofitem','$weight','$distance')";
             mysqli_query($conn,$query);
@@ -76,6 +76,15 @@ if(isset($_POST['makeARequestButton'])){
   <head>
     <title>MakeARequest</title>
     <link rel="stylesheet" type="text/css" href="SignupCSS.css">
+<!--      <script type="text/javascript"-->
+<!--              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA28e_E1hrVBwTy81k9Gj9NYsRh5oyr9gM&libraries=places&callback=autoComplete">-->
+<!--      </script>-->
+
+
+
+
+
+
   </head>
 
   <header>
@@ -121,14 +130,14 @@ if(isset($_POST['makeARequestButton'])){
               <label for="pickUpCityBox" id="pickUpCityBox-label">
                   Pick-Up City:
               </label>
-              <textarea
+              <input
 
-                  type="text-box"
+                  type="text"
                   class="form-control"
                   placeholder="Enter Your Pick-Up City"
                   id="pickUpCityBox"
                   name="pickupcity" required>
-          </textarea>
+
 
               <div class="error-text">
 
@@ -141,14 +150,14 @@ if(isset($_POST['makeARequestButton'])){
               <label for="dropCityBox" id="dropCityBox-label">
                   Drop City:
               </label>
-              <textarea
+              <input
 
-                  type="text-box"
+                  type="text"
                   class="form-control"
                   placeholder="Enter Your Drop City"
                   id="dropCityBox"
                   name="dropcity" required>
-          </textarea>
+
               <div class="error-text">
 
                   <?php   echo $errors['dropcity'];   ?>
@@ -243,6 +252,18 @@ if(isset($_POST['makeARequestButton'])){
       
       </form>
     </div>
+
+
+
+<!--    <script>-->
+<!--        function autoComplete(){-->
+<!--            var searchInput = document.getElementById('pickUpCityBox');-->
+<!--            var autocomplete= new google.maps.places.Autocomplete((document.getElementById(searchInput)));-->
+<!--            //google.maps.event.addDomListener(window, 'load', initialize);-->
+<!---->
+<!--        }-->
+<!--    </script>-->
+
 
   </body>
 
