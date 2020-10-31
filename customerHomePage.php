@@ -44,7 +44,7 @@ session_abort();
             <div class="divButtons">
 
                 <button type="submit" class="allButtons" id="button1"> <a href="customerMakeARequestPage.php">make a request</a> </button>
-                <button type="submit" class="allButtons"  id="button2"> <a href="#">your requests</a></button>
+                <button type="submit" class="allButtons"  id="button2"> <a href="yourRequests.php">your requests</a></button>
                 <button type="submit"  class="allButtons" id="button3"> <a href="#">give feedback</a></button>
 
             </div>

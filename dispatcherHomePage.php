@@ -31,9 +31,9 @@ echo '
 
             <div class="divButtons">
 
-                <button type="submit" class="allButtons" id="button1"> Available Requests to Choose</button>
-                <button type="submit" class="allButtons"  id="button2"> your requests</button>
-                <button type="submit"  class="allButtons" id="button3"> Feedback Given</button>
+                <button type="submit" class="allButtons" id="button1"> <a href="availableRequests.php"> Available Requests to Choose</a></button>
+                <button type="submit" class="allButtons"  id="button2"><a href="yourChoosenRequest.php"> your chosen requests</a></button>
+                <button type="submit"  class="allButtons" id="button3"> <a href=""> Feedback Given</a></button>
 
             </div>
 
