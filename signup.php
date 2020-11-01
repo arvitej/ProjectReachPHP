@@ -20,7 +20,7 @@
             'root',
             '',
             'projectreach');
-        $username =$email=$password=$confirmpassword=$address='';
+        $username =$email=$password=$confirmpassword=$address=$phonenumber='';
 //        //check username
 //        if(empty($_POST['username'])){
 //            $errors['username']="Username Cannot be empty";
@@ -64,7 +64,7 @@
 //        if(empty($_POST['address'])){
 //            $errors['address']="Address Cannot be empty";
 //        }
-//        else{
+//        els
 //            $address=$_POST['address'];
 //
 //        }
@@ -81,6 +81,8 @@
         $password=$_POST['password'];
         $confirmpassword=$_POST['confirmpassword'];
         $address=$_POST['address'];
+        $phonenumber=$_POST['phonenumber'];
+
 
         //form validation
         if(empty($username)){
@@ -146,7 +148,7 @@
         if($errors['username']==''&$errors['email']==''&$errors['password']==''&$errors['confirmpassword']==''&$errors['address']==''){
             //echo 'entered if';
             //$password=md5($password);
-            $query="INSERT INTO signup(username,email,password,confirmpassword,address) VALUES('$username','$email','$password','$confirmpassword','$address')";
+            $query="INSERT INTO signup(username,email,password,confirmpassword,phonenumber,address) VALUES('$username','$email','$password','$confirmpassword','$phonenumber','$address')";
             mysqli_query($conn,$query);
             $_SESSION['username']=$username;
             $_SESSION['success']="you are now successfully logged in";
@@ -286,6 +288,24 @@
                 </div>
 
 
+
+
+
+            </div>
+
+            <div class="form-group">
+                <label for="phonenumber" id="phone-label" class="label">
+                    PhoneNumber:
+                </label>
+                <input name="phonenumber"
+                       id="phonenumber"
+                       class="form-control"
+                       placeholder="enter your phone number"
+                        type="tel"
+                        maxlength="10"
+                       minlength="10"
+
+                       required>
 
 
 

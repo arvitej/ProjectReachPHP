@@ -1,5 +1,9 @@
 <?php
 //echo "working";
+session_start();
+$username=$_SESSION['username'];
+$phonenumber=$_SESSION['phonenumber'];
+
 $errors=array();
 $errors['pickupcity']='';
 $errors['dropcity']='';
@@ -15,8 +19,7 @@ if(isset($_POST['makeARequestButton'])){
             'root',
             '',
             'projectreach');
-        session_start();
-        $username=$_SESSION['username'];
+
         $pickupaddress=$_POST['pickupaddress'];
         $pickupcity=$_POST['pickupcity'];
         $dropcity=$_POST['dropcity'];
@@ -50,11 +53,12 @@ if(isset($_POST['makeARequestButton'])){
             //$password=md5($password);
             //echo "before query";
 
-            $query="INSERT INTO customerrequest(username,pickupaddress,pickupcity,dropcity,destinationaddress,typeofitem,weight,distance) VALUES('$username','$pickupaddress','$pickupcity','$dropcity','$destinationaddress','$typeofitem','$weight','$distance')";
+            $query="INSERT INTO customerrequest(username,phonenumber,pickupaddress,pickupcity,dropcity,destinationaddress,typeofitem,weight,distance) VALUES('$username','$phonenumber','$pickupaddress','$pickupcity','$dropcity','$destinationaddress','$typeofitem','$weight','$distance')";
             mysqli_query($conn,$query);
+
 //            $_SESSION['username']=$username;
 //            $_SESSION['success']="you are now successfully logged in";
-            echo "before header";
+
             header('location:yourRequests.php');
 
         }

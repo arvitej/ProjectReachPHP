@@ -25,7 +25,8 @@ $username=$_SESSION['username'];
 
     <nav>
         <ul class="navbar">
-            <li><a class="navbuttons" href="navBar.php">Home</a></li>
+            <li><a class="navbuttons" href="customerHomePage.php">CustomerHome</a></li>
+<!--            <li><a class="navbuttons" href="navBar.php">Home</a></li>-->
             <li><a class="navbuttons" href="#">ChangePassword</a></li>
             <li><a class="navbuttons" href="#">Help</a></li>
             <li><a class="navbuttons" href="navBar.php#aboutProjectReach">About</a></li>

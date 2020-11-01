@@ -17,9 +17,16 @@
         $username=$_POST['username'];
         $password=$_POST['password'];
         $dropdown=$_POST['chooseusertype'];
+
+        $query="SELECT phonenumber FROM signup  WHERE username='$username'";
+        $queryResult=mysqli_query($conn,$query);
+        $row=mysqli_fetch_assoc($queryResult);
         session_start();
 
         $_SESSION['username']=$username;
+        $_SESSION['phonenumber']=$row['phonenumber'];
+
+
 
         if(empty($username)){
             $errors['username']="username is required";
