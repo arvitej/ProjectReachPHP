@@ -15,17 +15,21 @@ if($num_rows>0){
     if(isset($_POST['requestButton'])){
         $changeStatus=$_POST['status'];
         $inputId=$_POST['requestIdInput'];
-        $validInputIdQuery="SELECT requestid FROM acceptedrequests WHERE dispatcherUserName='$dispatcherUserName' AND requestid='inputId'";
+        $validInputIdQuery="SELECT requestid FROM acceptedrequests WHERE dispatcherUserName='$dispatcherUserName' AND requestId='$inputId' ";
         $validInputIdQueryResult=mysqli_query($conn,$validInputIdQuery);
         $validInputIdQueryResultRows=mysqli_fetch_assoc($validInputIdQueryResult);
-        if(mysqli_num_rows($validInputIdQueryResult)!=0){
+        if(mysqli_num_rows($validInputIdQueryResult)==0){
             $errorWrongRequestId="you cannot change status of request which is not choosen by you..";
         }
+        if($errorWrongRequestId==''){
+            $customerRequestTableQuery="UPDATE customerrequest SET status='$changeStatus' WHERE requestId='$inputId'";
+            mysqli_query($conn,$customerRequestTableQuery);
+            $acceptedRequestsTableQuery="UPDATE acceptedrequests SET status='$changeStatus' WHERE requestId='$inputId'";
+            mysqli_query($conn,$acceptedRequestsTableQuery);
 
-        $customerRequestTableQuery="UPDATE customerrequest SET status='$changeStatus' WHERE requestId='$inputId'";
-        mysqli_query($conn,$customerRequestTableQuery);
-        $acceptedRequestsTableQuery="UPDATE acceptedrequests SET status='$changeStatus' WHERE requestId='$inputId'";
-        mysqli_query($conn,$acceptedRequestsTableQuery);
+        }
+
+
     }
 
 }
