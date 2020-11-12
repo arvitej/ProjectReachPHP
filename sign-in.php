@@ -38,7 +38,7 @@
         if($errors['username']==''&$errors['password']==''){
 
 
-            $user_check_query="SELECT * FROM signup WHERE username='$username' and password='$password'  ";
+            $user_check_query="SELECT * FROM signup WHERE username='$username' and password='$password' and verified=1 ";
 
             $results=mysqli_query($conn,$user_check_query) ;
             $user=mysqli_fetch_assoc($results);
@@ -65,7 +65,7 @@
                 $usernameSql=mysqli_fetch_assoc($results1);
 //              $passwordSql=mysqli_fetch_assoc($results2);
                 if($usernameSql){
-                    $errors['password']="password associated with username is wrong";
+                    $errors['password']="password associated with username is wrong (or) email is not verified";
                 }
                 else{
                     $errors['signup']="please sign-up before sign-in";
