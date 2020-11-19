@@ -82,6 +82,9 @@
         $confirmpassword=$_POST['confirmpassword'];
         $address=$_POST['address'];
         $phonenumber=$_POST['phonenumber'];
+        //Generate Verification Key
+        $verificationkey=md5(time().$username);
+        //echo $verificationkey;
 
 
         //form validation
@@ -148,11 +151,48 @@
         if($errors['username']==''&$errors['email']==''&$errors['password']==''&$errors['confirmpassword']==''&$errors['address']==''){
             //echo 'entered if';
             //$password=md5($password);
-            $query="INSERT INTO signup(username,email,password,confirmpassword,phonenumber,address) VALUES('$username','$email','$password','$confirmpassword','$phonenumber','$address')";
-            mysqli_query($conn,$query);
+            $query="INSERT INTO signup(username,email,password,confirmpassword,phonenumber,address,verificationkey) VALUES('$username','$email','$password','$confirmpassword','$phonenumber','$address','$verificationkey')";
+            $querySuccess=mysqli_query($conn,$query);
             $_SESSION['username']=$username;
             $_SESSION['success']="you are now successfully logged in";
-            header('location:sign-in.php');
+            if($querySuccess){
+                $to=$email;
+                $from=$email;
+                $bounce=$email;
+                $subject="Email Verification from ProjectReach";
+                $body="click on this link:'http://localhost/projectreachphp/verify.php?verificationkey=$verificationkey'";
+                //echo $body;
+                //$message = "Line 1\r\nLine 2\r\nLine 3";
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+                //$message = wordwrap($message, 70, "\r\n");
+                // Always set content-type when sending HTML email
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// Send
+                mail($email,$subject, $body);
+//                $headers = 'From: <arvitej6@gmail.com>' . "\r\n";
+//
+//
+               // $headers =  'MIME-Version: 1.0' . "\r\n";
+                //$headers .= 'From: ravitejasankuratri@gmail.com' . "\r\n";
+                //$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+//                mail($to, $subject, $message, $headers);
+                //function to send the email
+//               // if(mail($to,$subject,$body,$headers)){
+//                if(mail($to,$subject,$body)){
+//                    header('location:ThankYou.php');
+//                }
+//                else{
+//                    echo "error in sending mail";
+//                }
+
+
+
+            }
+            header('location:ThankYou.php');
 
         }
 //        elseif (count($errors)>0) {
@@ -233,7 +273,7 @@
 
 
             <div class="form-group">
-                <label for="email" id="email-label" class="label">Email:</label>
+                <label for="email" id="email-label" class="label">Enter only Google-mail:</label>
                 <input
                         type="text"
                         id="email"
