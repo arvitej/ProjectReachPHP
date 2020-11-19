@@ -196,7 +196,7 @@
             <button type="submit" id="submit" class="form-control" name="sign-in">sign-in
             </button>
 
-            <button type="submit" id="forgotpassword" class="form-control">forgot password
+              <button type="submit" id="forgotpassword" class="form-control"><a href="forgotPassword.php">forgot password</a>
             </button>
             
           </div>

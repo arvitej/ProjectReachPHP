@@ -84,7 +84,7 @@
         $phonenumber=$_POST['phonenumber'];
         //Generate Verification Key
         $verificationkey=md5(time().$username);
-        echo $verificationkey;
+        //echo $verificationkey;
 
 
         //form validation
@@ -273,7 +273,7 @@
 
 
             <div class="form-group">
-                <label for="email" id="email-label" class="label">Email:</label>
+                <label for="email" id="email-label" class="label">Enter only Google-mail:</label>
                 <input
                         type="text"
                         id="email"
