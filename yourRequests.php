@@ -47,7 +47,7 @@ $username=$_SESSION['username'];
 
         <?php
 
-        $sql="SELECT * FROM customerrequest WHERE username='$username'";
+        $sql="SELECT * FROM customerrequest WHERE username='$username' and paymentstatus=1";
         $result=mysqli_query($conn,$sql);
         //$result_check=mysqli_num_rows($result);
         //if ($result_check>0){

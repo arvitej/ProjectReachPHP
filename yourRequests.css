@@ -78,3 +78,31 @@ label{
     color:#39ca74;
 
 }
+
+input{
+    height:1.735rem;
+    width:70%;
+    border:1px solid black;
+    border-radius:0.25rem;
+    margin: 0 auto;
+}
+button{
+
+    background-color:green;
+    border-radius:25px;
+    cursor:pointer;
+    margin:10px auto 0 auto;
+    width:70%;
+
+}
+.inputRequestId{
+
+    padding:20px;
+
+    background-color: black;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.error-text{
+    color: #ff0033;
+}

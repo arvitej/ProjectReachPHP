@@ -24,7 +24,7 @@ if(isset($_POST['requestButton'])){
     if(mysqli_num_rows($errorCheckResult)==0){
         $error="Please choose only the requestid which is seen in above table..";
     }
-    if($error==''){
+    if($error==''&&$errorSameUser=='' ){
         //echo "in no error if";
         $insertQuery="INSERT INTO acceptedrequests(customerUserName,requestid,pickupaddress,pickupcity,dropcity,destinationaddress,customerphonenumber) SELECT username,requestid,pickupaddress,pickupcity,dropcity,destinationaddress,phonenumber FROM customerrequest WHERE requestid='$requestId' ";
         mysqli_query($conn,$insertQuery);

@@ -12,7 +12,6 @@ $error='';
 if(isset($_POST['feedBackButton'])){
     $requestId=$_POST['requestIdInput'];
     $rating=$_POST['ratingNumber'];
-    echo $rating;
     $comments=$_POST['textArea'];
     $errorCheckQuery="SELECT customerUserName FROM acceptedrequests WHERE requestid='$requestId' and status='$delivered' ";
     $errorResult=mysqli_query($conn,$errorCheckQuery);

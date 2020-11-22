@@ -3,6 +3,7 @@
 session_start();
 $username=$_SESSION['username'];
 $phonenumber=$_SESSION['phonenumber'];
+session_abort();
 
 $errors=array();
 $errors['pickupcity']='';
@@ -55,11 +56,18 @@ if(isset($_POST['makeARequestButton'])){
 
             $query="INSERT INTO customerrequest(username,phonenumber,pickupaddress,pickupcity,dropcity,destinationaddress,typeofitem,weight,distance) VALUES('$username','$phonenumber','$pickupaddress','$pickupcity','$dropcity','$destinationaddress','$typeofitem','$weight','$distance')";
             mysqli_query($conn,$query);
+            $requestIdQuery="SELECT * FROM customerrequest WHERE confirmationstatus=0 AND username='$username' LIMIT 1";
+            $requestIdQueryResult=mysqli_query($conn,$requestIdQuery);
+            $result=mysqli_fetch_assoc($requestIdQueryResult);
+            session_start();
+            $_SESSION['requestId']=$result['requestid'];
+
+
 
 //            $_SESSION['username']=$username;
 //            $_SESSION['success']="you are now successfully logged in";
 
-            header('location:yourRequests.php');
+            header('location:customerRequestConfirmationPage.php');
 
         }
 
